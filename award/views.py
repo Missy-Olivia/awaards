@@ -67,3 +67,37 @@ def profile(request,profile_id):
         'profile':profile,
     }
     return render(request,"profile.html",context=context)
+
+@login_required(login_url='/accounts/login/')     
+def new_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.user = current_user
+            project.save()
+        return redirect('index')
+        
+    else:
+        form = ProjectForm()
+    return render(request, 'new_project.html', {"form":form, "current_user":current_user})
+
+def search_results(request):
+
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get("project")
+        searched_projects = Project.search(search_term)
+        print(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"projects": searched_projects})
+
+    else:
+        message = "No searches yet."
+        return render(request, 'search.html',{"message":message})
+
+
+@login_required(login_url='/accounts/login/')   
+def api_page(request):
+    return render(request,'api_page.html')
