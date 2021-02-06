@@ -7,6 +7,10 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.shortcuts import render
+from .models import Profile, Project
+from .serializer import ProfileSerializer, ProjectSerializer
+from django.contrib.auth.models import User
+from .forms import RegForm, ProjectForm, ProfileUpdateForm
 
 # Create your views here.
 def register(request):
