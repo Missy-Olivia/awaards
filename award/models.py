@@ -24,7 +24,7 @@ class Profile(models.Model):
         update_profile = cls.objects.filter(id = id).update(bio = bio)
         return update_profile
 
-@classmethod
+    @classmethod
     def get_all_profiles(cls):
         profile = Profile.objects.all()
         return profile
