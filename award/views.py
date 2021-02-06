@@ -13,6 +13,11 @@ from django.contrib.auth.models import User
 from .forms import RegForm, ProjectForm, ProfileUpdateForm
 
 # Create your views here.
+def index(request):
+    projects = Project.objects.all().order_by('-date_posted')
+    return render(request, 'index.html',{'projects':projects})
+
+
 def register(request):
     if request.method == 'POST':
         form = RegForm(request.POST)
@@ -105,3 +110,16 @@ def search_results(request):
 @login_required(login_url='/accounts/login/')   
 def api_page(request):
     return render(request,'api_page.html')
+
+class ProfileList(APIView):
+    def get(self, request, fromat=None):
+        all_profiles =Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+        return Response(serializers.data)
+
+
+class ProjectList(APIView):
+    def get(self, request, fromat=None):
+        all_projects =Project.objects.all()
+        serializers =ProjectSerializer(all_projects, many=True)
+        return Response(serializers.data)
