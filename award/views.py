@@ -49,3 +49,21 @@ def my_profile(request):
         'profile':profile,
     }
     return render(request,"my_profile.html",context=context)
+
+@login_required(login_url='/accounts/login/') 
+def profile(request,profile_id):
+    profile = Profile.objects.get(id=profile_id)
+    projects = Project.objects.filter(user=profile.user).all()
+    print(profile.user)
+    form=ProfileUpdateForm(instance=profile)
+    
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES,instance=profile)
+        if form.is_valid():
+            form.save()
+    context={
+        'form':form,
+        'projects':projects,
+        'profile':profile,
+    }
+    return render(request,"profile.html",context=context)
