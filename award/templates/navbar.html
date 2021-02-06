@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #navbar{
+            font-family: 'Roboto Mono', monospace;
+            }
+        @media screen and (max-width:992px){
+        #search_form, #profile, .upload{
+       display: none;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="navbar" class="container-fluid" style="border-bottom: 1px solid rgb(168, 165, 165);">
+        <div class="row">
+            <div class="col-md-1" style="padding-top:15px; border-right:1px solid rgb(180, 175, 175);">
+                <div class="">
+                    <div id="mySidenav" class="sidenav" style='background-color:rgb(231, 224, 231); text-transform:uppercase;font-weight:bold;'>
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> CLOSE &nbsp;<span style='height:20px; width:20px; font-size:18px;'>&times;</span></a>
+                         {% if user.is_authenticated %}
+                        <li class="dropdown-divider"></li>
+                        <a href='my_profile'>{{request.user}}</a>
+                        {% endif %}
+                        <li class="dropdown-divider"></li>
+                        <a href='register'>Register/Login</a>
+                        <li class="dropdown-divider"></li>
+                        <a href="/">Home</a>
+                        <li class="dropdown-divider"></li>
+                        <a href='/api-page/'>API</a>
+                        <li class="dropdown-divider"></li>
+                        <a href="#">Nominees</a>
+                        <li class="dropdown-divider"></li>
+                        <a href='#'>Past Winners</a>
+                    </div>
+
+                    <div id="main">
+                        <span style="cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1" style="padding-top:10px;">
+                <form class="form-inline my-2 my-lg-0" role="search" id='search_form' action='search_results'>
+                    <input type="text" class="form-control my-2 my-sm-0 search-input" name="project" placeholder="Search by title.." id="search">
+                </form>
+            </div>
+            <div class="col-md-8" style=" padding-top:5px;text-align:center;">
+                <div class="row">
+                    <div class="col-md-10">
+                        <a class="navbar-brand navbar-right" href="{% url 'index' %}" style="font-size:30px; color:black;font-family: 'Roboto Mono', monospace;">Awwwards.</a>
+                    </div>
+                    <div class="col-md-2" style="padding-top:10px;">
+                        <div class="row" id='profile'>
+                            {% if user.is_authenticated %}
+                            <div class="col-md-8">
+                                
+                                <div class="dropdown">
+                                    <a class="btn btn" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">{{ user.username }} <img src='{{user.profile.profile_picture.url}}' width='18px' height='18px' style='border-radius:50%;'>
+                                    </a>
+                                    <div class="dropdown-menu" style="width:300px;">
+                                        <a class="dropdown-item" href= 'my_profile'>Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="/logout">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+
+                            <a class='btn btn-default' href="/accounts/login/?next=/">Register/Login</a>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 upload" style="padding-top:15px; background-color: #49c5b6; text-align:center">
+                <a href= 'new_project' style="color:white; font-size:14px; text-decoration: none; ">SUBMIT YOUR
+                    SITE!
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+        }
+    </script>
+</body>
+
+</html>
