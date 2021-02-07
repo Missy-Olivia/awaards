@@ -4,7 +4,7 @@
 {% load ratings %}
 {{block.super}} 
 <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-<div class="container" style="padding: 60px;">
+<div class="container" style="padding: 60px; background-color: #49c5b748;">
     <div class="row" >
         <div class="col-md-6 col-lg-6" style="padding-top:60px;" >
             <div class="card ">
@@ -19,7 +19,7 @@
                 <h3 style='text-align:left;'><strong>Project Description</strong></h3>
                 <p>{{project.description}}</p>
                 <h6><strong> Developer:</strong><a href='/profile/{{project.user.profile.id}}'> {{project.user}}</a></h6><br>
-                <a class="btn btn-info text-center" style="border-radius: 25px;" href="{{project.link}}" target="_blank">Visit Website</a><br><br>
+                <a class="btn btn-info text-center" style="border-radius: 25px; background-color: #49c5b6;" href="{{project.link}}" target="_blank">Visit Website</a><br><br>
             </div>
             <div >
                 <h3 style="font-weight: bold;">Average Rating score:</h3>

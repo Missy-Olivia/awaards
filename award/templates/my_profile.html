@@ -35,8 +35,7 @@
                     <h5><strong> Username:</strong> {{request.user.profile.user}}</h5>
                     <h5><strong>Email:</strong> {{request.user.profile.email}}</h5>
                     <h5><strong>Bio:</strong>{{request.user.profile.bio}}</h5>
-                    <h5><strong>Contact:</strong>{{request.user.profile.contact}}</h5><br>
-                <a class="btn btn-info text-center" onclick="toggleFunc()" style="border-radius: 25px; color:white;"target="_blank">Edit Profile</a><br><br>
+                <a class="btn btn-info text-center" onclick="toggleFunc()" style="border-radius: 25px; color:white;background-color:  #49c5b6;"target="_blank">Edit Profile</a><br><br>
             </div>
             </div>
         </div>
@@ -50,7 +49,7 @@
                 <div class="card-text text-center" style="padding: 20px;">
                     <h5 style="font-weight: bold;">{{project.title}}</h5>
                     <small class="text-muted">{{project.description | slice:":45" }}...</small><br><br>
-                    <a class="btn btn-info" style="border-radius: 25px;" href="/project/{{project.id}}" >Project details & Rating</a>
+                    <a class="btn btn-info" style="border-radius: 25px;background-color:  #49c5b6;" href="/project/{{project.id}}" >Project details & Rating</a>
                 </div>
             </div>
         </div>
