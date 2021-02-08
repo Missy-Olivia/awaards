@@ -28,7 +28,7 @@
                         <a href='my_profile'>{{request.user}}</a>
                         {% endif %}
                         <li class="dropdown-divider"></li>
-                        <a href='register'>Register/Login</a>
+                        <a href='/accounts/login'>Register/Login</a>
                         <li class="dropdown-divider"></li>
                         <a href="/">Home</a>
                         <li class="dropdown-divider"></li>
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="col-md-1" style="padding-top:10px;">
-                <form class="form-inline my-2 my-lg-0" role="search" id='search_form' action='search_results'>
+                <form class="form-inline my-2 my-lg-0" role="search" id='search_form' action="{% url 'search_results' %}">
                     <input type="text" class="form-control my-2 my-sm-0 search-input" name="project" placeholder="search..." id="search">
                 </form>
             </div>
@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="col-md-2 upload" style="padding-top:15px; background-color: #49c5b6; text-align:center">
-                <a href= 'new_project' style="color:white; font-size:14px; text-decoration: none; ">SUBMIT YOUR
+                <a href= "{%url 'new_project'%}"  style="color:white; font-size:14px; text-decoration: none; ">SUBMIT YOUR
                     SITE!
                 </a>
             </div>
