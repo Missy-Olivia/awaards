@@ -25,7 +25,7 @@
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> CLOSE &nbsp;<span style='height:20px; width:20px; font-size:18px;'>&times;</span></a>
                          {% if user.is_authenticated %}
                         <li class="dropdown-divider"></li>
-                        <a href='my_profile'>{{request.user}}</a>
+                        <a href='my_profile'><i class="fas fa-user"></i>{{request.user}}</a>
                         {% endif %}
                         <li class="dropdown-divider"></li>
                         <a href='/accounts/login'>Register/Login</a>
@@ -52,7 +52,7 @@
             <div class="col-md-8" style=" padding-top:5px;text-align:center;">
                 <div class="row">
                     <div class="col-md-10">
-                        <a class="navbar-brand navbar-right" href="{% url 'index' %}" style="font-size:30px; color:black;font-family: 'Roboto Mono', monospace;">Awwwards.</a>
+                        <a class="navbar-brand navbar-right" href="{% url 'index' %}" style="font-size:30px; color:black;font-family: 'Roboto Mono', monospace;"><i class="fas fa-trophy"></i>Awwwards.</a>
                     </div>
                     <div class="col-md-2" style="padding-top:10px;">
                         <div class="row" id='profile'>
