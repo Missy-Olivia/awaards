@@ -6,6 +6,7 @@
 
 ###  PROJECT DESCRIPTION
 The application will allow a user to post a project they have created and get it reviewed by their peers.
+
 ## User Stories
 As a user of the application I should be able to:
 
@@ -23,6 +24,7 @@ As a user of the application I should be able to:
 
 ## Author
 Missy Olivia
+
 ### Prerequisites
 
 -You need to have (python3.6) installed in your machine
@@ -53,15 +55,20 @@ Missy Olivia
 
 #{follow the above instructions for set up}
 
-#Technologies Used
+# Technologies Used
 
 -HTML5
+
 -CSS
+
 -Javascript
+
 -Bootstrap
+
 -Python3.6
+
 -Django 3.1.5
--Psycopg2
+
 -PostgreSQL
 
 # Contact
