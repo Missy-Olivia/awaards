@@ -14,7 +14,11 @@
     <div class="row">
         <div class="col-lg-6" >
             <div style="text-align:center">
-                <img src="{{profile.profile_picture.url}}"  alt="profile_pic" width="200px"  height="200px " style="border-radius: 50%;">
+                {% if user.profile.profile_picture%}
+                <img src="{{user.profile.profile_picture.url}}"  alt="profile_pic" width="200px"  height="200px " style="border-radius: 50%;">
+                {% else %}
+                <img src='media/profiles/default.png'alt="profile_pic" width="200px"  height="200px " style="border-radius: 50%;">
+                {% endif %}
             </div><br><br>
             <div id='form' style='display: none;' >
                 <div class="card-text" style="padding: 20px;">

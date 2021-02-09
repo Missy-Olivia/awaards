@@ -11,9 +11,14 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
+import django_heroku
+import dj_database_url
+from decouple import config,Csv
+LOGIN_REDIRECT_URL = '/login/'
+LOGIN_URL = '/login/'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -32,7 +37,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'award',
-    'rest_framework',
     'star_ratings',
     'bootstrap4',
     'django.contrib.admin',
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -122,7 +127,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+STAR_RATINGS_RERATE = True
+STAR_RATINGS_RANGE=10
+STAR_RATINGS_STAR_HEIGHT=20
+STAR_RATINGS_STAR_WIDTH=20
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
